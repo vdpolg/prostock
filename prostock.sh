@@ -3,7 +3,8 @@
 #prostock	v0.1	20180903	arthur	先抓資料：元大0050
 WRKDIR=$PWD
 mkdir -p $WRKDIR/tmp
-STOCKTMP=$WRKDIR/tmp/stock.tmp #暫存檔
+touch $WRKDIR/tmp/stock.tmp #暫存檔
+STOCKTMP=$WRKDIR/tmp/stock.tmp
 SOURCE='http://pchome.megatime.com.tw/group/mkt5/cidE002'
 function SH(){ #Source Html 目前2個網頁
 echo "${SOURCE}.html ${SOURCE}_02.html"
@@ -19,22 +20,29 @@ sed '/--/d' d2.tmp |sed "s/^[0-9]/<\">/" > d3.tmp #刪grep 剩的-- ，並在數
 sed 's/<.*">//g' d3.tmp | sed "s/<\/span>.*>//g" > d4.tmp #刪股價後的data
 sed "s/.(/,/g" d4.tmp |sed "s/).*>/,n/g" |xargs > d5.tmp #全弄成一行，分隔用,n
 sed "s/,n. /,/g" d5.tmp | sed "s/[0-9]. / \n/g" > d6.tmp #再拆開
-sed "s///g" d6.tmp | sed "s/　//g" >> f7.tmp # 去除\(Ctrl+V &Ctrl+M)斷行符號,中文字空格
+sed "s///g" d6.tmp | sed "s/　//g" > d7.tmp # 去除\^M(Ctrl+V & Ctrl+M)斷行符號,中文字空格
+sed "s/^/'/g" d7.tmp |sed "s/^[^\D,]\{1,10\}/&'/g" |sed "s/ $//g" >> f8.tmp #中文字前後加''方便日後塞入db, 移除結尾的空白
 cd $WRKDIR ; mv d* tmp/
 }
-> f7.tmp #清空舊資料
+AII() { #Add Insert Into
+while IFS= read -r line; do
+echo "insert into stock_main (stock_name,stock_num,done_price ) values ( $line"
+done
+}
+> p10.tmp #清空舊資料
 echo "抓資料中..."
 for i in `SH`
 do
 SOURCEHTML=$i	
 GSH
 	done
-cat f7.tmp |less #show stock
+cat f8.tmp | AII > f9.tmp # 塞db用的 insert into stock_main (stock_name,stock_num,done_price ) volumes ( 
+sed "s/$/\);/g" f9.tmp > p10.tmp # 塞db用的 insert 的結尾
+less p10.tmp # show stock
+mv f*tmp tmp/ # 搬暫存檔，避免f8 重複執行多餘資料
 # 待辦：塞DB
 # 0.Primary key 1.股票名稱	2.代號	3.收盤後成交價 4.當日最高 5.當日最低 6.日期 (塞db)
-# db快忘光光了, insert in 時股名前後要''包住,
-# echo insert into stock_main (stock_name,stock_num,done_price ) volumes (
-# 結尾 );
+# db快忘光光了
 # db timestamp 要想辦法
 # 匯出匯入db
 # docker compose yml 寫法,db 一啟動就停止,3306port連入,volumes 外部掛載
