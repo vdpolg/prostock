@@ -30,5 +30,11 @@ SOURCEHTML=$i
 GSH
 	done
 cat f7.tmp |less #show stock
-#待辦：塞DB
+# 待辦：塞DB
 # 0.Primary key 1.股票名稱	2.代號	3.收盤後成交價 4.當日最高 5.當日最低 6.日期 (塞db)
+# db快忘光光了, insert in 時股名前後要''包住,
+# echo insert into stock_main (stock_name,stock_num,done_price ) volumes (
+# 結尾 );
+# db timestamp 要想辦法
+# 匯出匯入db
+# docker compose yml 寫法,db 一啟動就停止,3306port連入,volumes 外部掛載
