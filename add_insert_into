@@ -1,6 +1,0 @@
-#!/bin/bash
-AII() { #Add Insert Into
-while IFS= read -r line; do
-echo "insert into stock_main (stock_name,stock_num,done_price ) values ( $line"
-done
-}
