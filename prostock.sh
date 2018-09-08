@@ -14,4 +14,10 @@ grep -v "<p>" $STOCKTMP|grep -A8 "([0-9]\{1,4\})" > d1.tmp
 #股名和代號
 #grep sid d1.tmp | awk -F '>' '{print $3}'|sed "s/)<\/a//g"|sed "s/ (/,/g" > d2.tmp
 sed "s/.*ct.>//g" d1.tmp |sed "/:[0-9]/d"  | grep -A1 "(" > d2.tmp
-#2395 首欄沒有< 問題待處理
+sed '/--/d' d2.tmp |sed "s/^[0-9]/<\">/" > d3.tmp #刪grep 剩的-- ，並在數字前加<">
+sed 's/<.*">//g' d3.tmp | sed "s/<\/span>.*>//g" > d4.tmp #刪股價後的data
+sed "s/.(/,/g" d4.tmp |sed "s/).*>/,n/g" |xargs > d5.tmp #全弄成一行，分隔用,n
+sed "s/,n. /,/g" d5.tmp | sed "s/[0-9]. / \n/g" > final.txt #再拆開，完工，剩塞db
+cd $WRKDIR ; mv d* tmp/
+cat final.txt |less #show stock
+#待辦：中文字空格處理、網頁第二頁資料、塞DB、是否用function 處理重複撈取資料
