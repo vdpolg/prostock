@@ -17,7 +17,8 @@ sed "s/.*ct.>//g" d1.tmp |sed "/:[0-9]/d"  | grep -A1 "(" > d2.tmp
 sed '/--/d' d2.tmp |sed "s/^[0-9]/<\">/" > d3.tmp #刪grep 剩的-- ，並在數字前加<">
 sed 's/<.*">//g' d3.tmp | sed "s/<\/span>.*>//g" > d4.tmp #刪股價後的data
 sed "s/.(/,/g" d4.tmp |sed "s/).*>/,n/g" |xargs > d5.tmp #全弄成一行，分隔用,n
-sed "s/,n. /,/g" d5.tmp | sed "s/[0-9]. / \n/g" > final.txt #再拆開，完工，剩塞db
+sed "s/,n. /,/g" d5.tmp | sed "s/[0-9]. / \n/g" > d6.tmp #再拆開
+sed "s/^M//g" d6.tmp | sed "s/　//g" >> f7.tmp # 去除(Ctrl+V &Ctrl+M)斷行符號,中文字空格
 cd $WRKDIR ; mv d* tmp/
-cat final.txt |less #show stock
-#待辦：中文字空格處理、網頁第二頁資料、塞DB、是否用function 處理重複撈取資料
+cat f7.tmp |less #show stock
+#待辦：網頁第二頁資料、塞DB、是否用function 處理重複撈取資料
