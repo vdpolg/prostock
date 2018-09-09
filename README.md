@@ -32,11 +32,11 @@ v1.3	20180909	確定volumes掛載路徑和移除失效volume簡省空間
 ###### ref11: [Mysql 多筆insert](http://gn02214231.pixnet.net/blog/post/200632246-sql-insert-into)
 ###### ref12: [Mysql utf8mb4格式](http://ourmysql.com/archives/1402)
 ###### ref13: [docker Mysql TimeZone](https://hk.saowen.com/a/207e511282672f4a85600ed8225f8ed764fb5614180c652e377d6910d09d5ce8)
-###### ref14: 快速刪停用的container :docker rm `'`docker ps -aq`'`
+###### ref14: 快速刪停用的container :`docker rm $(docker ps -aq)`
 ###### ref15: [docker-compose volume1](https://docs.docker.com/compose/compose-file/#volume-configuration-reference)
 ###### ref16: [docker-compose volume2](http://www.netadmin.com.tw/article_print.aspx?sn=1712060002)
-###### ref17: [docker remove 失效volume](https://medium.com/@toomore/%E9%97%9C%E6%96%BC%E6%88%91%E5%B8%B8%E7%94%A8%E7%9A%84-docker-%E5%B0%8F%E6%8F%90%E7%A4%BA-9a63efdbce20) '`docker volume ls -qf dangling=true | xargs -r docker volume rm`'
-###### ref18: [docker 找到volume實體位置](https://ithelp.ithome.com.tw/articles/10192397) '`docker inspect -f '{{.Mounts}}' <container id>`'
+###### ref17: [docker remove 失效volume](https://medium.com/@toomore/%E9%97%9C%E6%96%BC%E6%88%91%E5%B8%B8%E7%94%A8%E7%9A%84-docker-%E5%B0%8F%E6%8F%90%E7%A4%BA-9a63efdbce20) `docker volume ls -qf dangling=true | xargs -r docker volume rm`
+###### ref18: [docker 找到volume實體位置](https://ithelp.ithome.com.tw/articles/10192397) `docker inspect -f '{{.Mounts}}' <container id>`
 
 
 
