@@ -17,11 +17,12 @@ v1.3	20180909	確定volumes掛載路徑和移除失效volume節省空間
 v1.4	20180909	mv mairadb mariadb 字打錯了
 v2.0	20180909	docker-compose啟動db時可匯入DB schema(開心!!) #ref21
 v2.1	20180909	加入function VD驗證機制, 因為常常抓不到第一頁資料。
+v2.2	20180909	新增import shell將資料寫入db ，但有亂碼中文字待處理。
 </pre>
 ## 待辦：
 ##### 0.Primary key 1.股票名稱  2.代號  3.收盤後成交價 4.當日最高 5.當日最低 6.日期 (塞db)
 ##### db timestamp 要想辦法
-##### 準備測試sql匯入
+##### db password密碼加密
 ##### db 內和日期和stock_name 當key 不可重複,timezone +08:00
 ###### ref1: [sed:匹配和保存字串](http://man.linuxde.net/sed)
 ###### ref2: [文字檔前加入文字(塞db用的)](https://serverfault.com/questions/310098/how-to-add-a-timestamp-to-bash-script-log)
