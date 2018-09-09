@@ -14,10 +14,12 @@ v1.0	20180909	產出文字檔可塞入db，但還是一堆待辦…
 v1.1	20180909	ref9~16修改(待驗證),新增mariadb folder加入docker-compose.yml檔(也是搞死我)
 v1.2	20180909	將date改為check_time，令查詢時間=塞入db時間。
 v1.3	20180909	確定volumes掛載路徑和移除失效volume簡省空間
+v1.4	20180909	mv mairadb mariadb 字打錯了
 </pre>
 ## 待辦：
 ##### 0.Primary key 1.股票名稱  2.代號  3.收盤後成交價 4.當日最高 5.當日最低 6.日期 (塞db)
 ##### db timestamp 要想辦法
+##### 準備測試sql匯入
 ##### db 內和日期和stock_name 當key 不可重複,timezone +08:00
 ###### ref1: [sed:匹配和保存字串](http://man.linuxde.net/sed)
 ###### ref2: [文字檔前加入文字(塞db用的)](https://serverfault.com/questions/310098/how-to-add-a-timestamp-to-bash-script-log)
@@ -37,7 +39,6 @@ v1.3	20180909	確定volumes掛載路徑和移除失效volume簡省空間
 ###### ref16: [docker-compose volume2](http://www.netadmin.com.tw/article_print.aspx?sn=1712060002)
 ###### ref17: [docker remove 失效volume](https://medium.com/@toomore/%E9%97%9C%E6%96%BC%E6%88%91%E5%B8%B8%E7%94%A8%E7%9A%84-docker-%E5%B0%8F%E6%8F%90%E7%A4%BA-9a63efdbce20) `docker volume ls -qf dangling=true | xargs -r docker volume rm`
 ###### ref18: [docker 找到volume實體位置](https://ithelp.ithome.com.tw/articles/10192397) `docker inspect -f '{{.Mounts}}' <container id>`
-
-
-
-
+###### ref19: [docker 找到volume實體位置2](https://julianchu.net/2016/04/19-docker.html) `docker volume inspect <volume id>`
+###### ref20: [docker 掛載其他volume] `docker run -d --name QQ --volumes-from <其他container id> <image id>`
+###### ref21: [docker MariaDB匯入sql](https://stackoverflow.com/questions/43880026/import-data-sql-mysql-docker-container/43880563) 
