@@ -1,0 +1,10 @@
+#!/bin/bash
+#start db and admin
+# docker-compose -f docker-compose.yml up
+#stop 
+# docker-compose stop
+#rm
+# docker-compose rm
+#find volume
+# docker volume ls 
+# docker volume inspect <volume name>

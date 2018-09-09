@@ -8,6 +8,7 @@ services:
     restart: always
     volumes:
       - db_vol:/var/lib/mysql
+      - ./stock_main.sql:/docker-entrypoint-initdb.d/stock_main.sql
     environment:
       MYSQL_ROOT_PASSWORD: 111111
       TZ: Asia/Taipei

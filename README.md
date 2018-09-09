@@ -15,6 +15,7 @@ v1.1	20180909	ref9~16修改(待驗證),新增mariadb folder加入docker-compose.
 v1.2	20180909	將date改為check_time，令查詢時間=塞入db時間。
 v1.3	20180909	確定volumes掛載路徑和移除失效volume簡省空間
 v1.4	20180909	mv mairadb mariadb 字打錯了
+v2.0	20180909	docker-compose 起db 時可匯入DB schema(開心！！) #ref21
 </pre>
 ## 待辦：
 ##### 0.Primary key 1.股票名稱  2.代號  3.收盤後成交價 4.當日最高 5.當日最低 6.日期 (塞db)
