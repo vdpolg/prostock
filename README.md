@@ -13,12 +13,12 @@ v0.9	20180909	修改重複執行時資料異常問題
 v1.0	20180909	產出文字檔可塞入db，但還是一堆待辦…
 v1.1	20180909	ref9~16修改(待驗證),新增mariadb folder加入docker-compose.yml檔(也是搞死我)
 v1.2	20180909	將date改為check_time，令查詢時間=塞入db時間。
+v1.3	20180909	確定volumes掛載路徑和移除失效volume簡省空間
 </pre>
 ## 待辦：
 ##### 0.Primary key 1.股票名稱  2.代號  3.收盤後成交價 4.當日最高 5.當日最低 6.日期 (塞db)
 ##### db timestamp 要想辦法
-##### docker compose yml 寫法,db 一啟動就停止,3306port連入,volumes 外部掛載
-##### 來源檔塞日期,db 內和日期和stock_name 當key 不可重複,價格要有小數點,insert into 優化不用每行開頭都加insert,timezone +08:00
+##### db 內和日期和stock_name 當key 不可重複,timezone +08:00
 ###### ref1: [sed:匹配和保存字串](http://man.linuxde.net/sed)
 ###### ref2: [文字檔前加入文字(塞db用的)](https://serverfault.com/questions/310098/how-to-add-a-timestamp-to-bash-script-log)
 ###### ref3: [README.md寫法](https://github.com/guodongxiaren/README#%E9%93%BE%E6%8E%A5)
@@ -32,9 +32,11 @@ v1.2	20180909	將date改為check_time，令查詢時間=塞入db時間。
 ###### ref11: [Mysql 多筆insert](http://gn02214231.pixnet.net/blog/post/200632246-sql-insert-into)
 ###### ref12: [Mysql utf8mb4格式](http://ourmysql.com/archives/1402)
 ###### ref13: [docker Mysql TimeZone](https://hk.saowen.com/a/207e511282672f4a85600ed8225f8ed764fb5614180c652e377d6910d09d5ce8)
-###### ref14: 快速刪停用的container :docker rm ``docker ps -aq``
+###### ref14: 快速刪停用的container :docker rm `'`docker ps -aq`'`
 ###### ref15: [docker-compose volume1](https://docs.docker.com/compose/compose-file/#volume-configuration-reference)
 ###### ref16: [docker-compose volume2](http://www.netadmin.com.tw/article_print.aspx?sn=1712060002)
+###### ref17: [docker remove 失效volume](https://medium.com/@toomore/%E9%97%9C%E6%96%BC%E6%88%91%E5%B8%B8%E7%94%A8%E7%9A%84-docker-%E5%B0%8F%E6%8F%90%E7%A4%BA-9a63efdbce20) '`docker volume ls -qf dangling=true | xargs -r docker volume rm`'
+###### ref18: [docker 找到volume實體位置](https://ithelp.ithome.com.tw/articles/10192397) '`docker inspect -f '{{.Mounts}}' <container id>`'
 
 
 
