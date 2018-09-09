@@ -26,17 +26,16 @@ cd $WRKDIR ; mv d* tmp/
 }
 AII() { #Add Insert Into ref2
 while IFS= read -r line; do
-echo "insert into stock_main (stock_name,stock_num,done_price ) values ( $line"
+echo "insert into stock_main (stock_name,stock_num,done_price,check_time ) values ( $line"
 done
 }
-touch p10.tmp #清空舊資料
 echo "抓資料中..."
 for i in `SH`
 do
 SOURCEHTML=$i	
 GSH
 	done
-cat f8.tmp | AII > f9.tmp # 塞db用的 insert into stock_main (stock_name,stock_num,done_price ) values ( 
-sed "s/$/\);/g" f9.tmp > p10.tmp # 塞db用的 insert 的結尾
+cat f8.tmp | AII > f9.tmp # 塞db用的 insert into stock_main (stock_name,stock_num,done_price,check_time ) values ( 
+sed "s/$/,current_timestamp());/g" f9.tmp > p10.tmp # insert 的結尾,含current time
 less p10.tmp # show stock
 mv f*tmp tmp/ # 搬暫存檔，避免f8 重複執行多餘資料

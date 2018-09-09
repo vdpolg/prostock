@@ -12,6 +12,7 @@ v0.8	20180908	令p10.tmp = insert db 格式資料(送啦！)
 v0.9	20180909	修改重複執行時資料異常問題
 v1.0	20180909	產出文字檔可塞入db，但還是一堆待辦…
 v1.1	20180909	ref9~16修改(待驗證),新增mariadb folder加入docker-compose.yml檔(也是搞死我)
+v1.2	20180909	將date改為check_time，令查詢時間=塞入db時間。
 </pre>
 ## 待辦：
 ##### 0.Primary key 1.股票名稱  2.代號  3.收盤後成交價 4.當日最高 5.當日最低 6.日期 (塞db)
@@ -31,7 +32,7 @@ v1.1	20180909	ref9~16修改(待驗證),新增mariadb folder加入docker-compose.
 ###### ref11: [Mysql 多筆insert](http://gn02214231.pixnet.net/blog/post/200632246-sql-insert-into)
 ###### ref12: [Mysql utf8mb4格式](http://ourmysql.com/archives/1402)
 ###### ref13: [docker Mysql TimeZone](https://hk.saowen.com/a/207e511282672f4a85600ed8225f8ed764fb5614180c652e377d6910d09d5ce8)
-###### ref14: 快速刪停用的container :docker rm `docker ps -aq`
+###### ref14: 快速刪停用的container :docker rm ``docker ps -aq``
 ###### ref15: [docker-compose volume1](https://docs.docker.com/compose/compose-file/#volume-configuration-reference)
 ###### ref16: [docker-compose volume2](http://www.netadmin.com.tw/article_print.aspx?sn=1712060002)
 
