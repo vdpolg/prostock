@@ -1,7 +1,7 @@
 # prostock
 <pre>
-版本	日期			備註	作者:arthur    
-v0.1	20180903  先抓資料：元大0050  
+版本	日期		備註	作者:arthur    
+v0.1	20180903 	先抓資料：元大0050  
 v0.2	20180904	初步能撈第17筆資料的股名、代號塞入stock.q1 、也能欄轉列				
 v0.3	20180907	令curl 抓資料(模擬browser)後續待處理					
 v0.4	20180908	第一頁抓取OK				
@@ -11,6 +11,7 @@ v0.7	20180908	納入第二頁資料(真的剩塞DB了!!!!!!)
 v0.8	20180908	令p10.tmp = insert db 格式資料(送啦！)
 v0.9	20180909	修改重複執行時資料異常問題
 v1.0	20180909	產出文字檔可塞入db，但還是一堆待辦…
+v1.1	20180909	ref9~16修改(待驗證),新增mariadb folder加入docker-compose.yml檔(也是搞死我)
 </pre>
 ## 待辦：
 ##### 0.Primary key 1.股票名稱  2.代號  3.收盤後成交價 4.當日最高 5.當日最低 6.日期 (塞db)
@@ -25,5 +26,15 @@ v1.0	20180909	產出文字檔可塞入db，但還是一堆待辦…
 ###### ref6: [mariadb docker](https://my.oschina.net/iluckyboy/blog/740661)
 ###### ref7: [Mysql datetime](https://dev.mysql.com/doc/refman/8.0/en/date-and-time-types.html)
 ###### ref8: [Mysql PK自動增加](https://dotblogs.com.tw/ianchiu28/2017/05/21/142523)
+###### ref9: [Mysql 小數點](https://webcache.googleusercontent.com/search?q=cache:D8VaEgMszGgJ:https://n.sfs.tw/10266+&cd=1&hl=zh-TW&ct=clnk&gl=tw&client=firefox-b-ab)
+###### ref10: [Mysql timestamp](https://mariadb.com/kb/en/library/timestamp/)
+###### ref11: [Mysql 多筆insert](http://gn02214231.pixnet.net/blog/post/200632246-sql-insert-into)
+###### ref12: [Mysql utf8mb4格式](http://ourmysql.com/archives/1402)
+###### ref13: [docker Mysql TimeZone](https://hk.saowen.com/a/207e511282672f4a85600ed8225f8ed764fb5614180c652e377d6910d09d5ce8)
+###### ref14: 快速刪停用的container :docker rm `docker ps -aq`
+###### ref15: [docker-compose volume1](https://docs.docker.com/compose/compose-file/#volume-configuration-reference)
+###### ref16: [docker-compose volume2](http://www.netadmin.com.tw/article_print.aspx?sn=1712060002)
+
+
 
 
