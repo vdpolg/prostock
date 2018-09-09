@@ -29,6 +29,15 @@ while IFS= read -r line; do
 echo "insert into stock_main (stock_name,stock_num,done_price,check_time ) values ( $line"
 done
 }
+function VD(){ # Valid Data
+declare -i DAT=54 #元大50有54個成份股
+if [ `cat p10.tmp | wc -l` == $DAT ]; then
+echo "驗證OK,有$DAT 筆資料!"
+else
+	echo "網路異常，資料有漏請重新執行!"
+	exit 1
+fi
+} 
 echo "抓資料中..."
 for i in `SH`
 do
@@ -37,5 +46,6 @@ GSH
 	done
 cat f8.tmp | AII > f9.tmp # 塞db用的 insert into stock_main (stock_name,stock_num,done_price,check_time ) values ( 
 sed "s/$/,current_timestamp());/g" f9.tmp > p10.tmp # insert 的結尾,含current time
-less p10.tmp # show stock
 mv f*tmp tmp/ # 搬暫存檔，避免f8 重複執行多餘資料
+VD # Valid Data
+less p10.tmp # show stock
