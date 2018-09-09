@@ -9,6 +9,9 @@ services:
     volumes:
       - db_vol:/var/lib/mysql
       - ./stock_main.sql:/docker-entrypoint-initdb.d/stock_main.sql
+      - ./mysql.sql:/docker-entrypoint-initdb.d/mysql.sql
+      - ./mariadb.cnf:/etc/mysql/mariadb.cnf
+
     environment:
       MYSQL_ROOT_PASSWORD: 111111
       TZ: Asia/Taipei

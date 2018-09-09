@@ -18,9 +18,10 @@ v1.4	20180909	mv mairadb mariadb 字打錯了
 v2.0	20180909	docker-compose啟動db時可匯入DB schema(開心!!) #ref21
 v2.1	20180909	加入function VD驗證機制, 因為常常抓不到第一頁資料。
 v2.2	20180909	新增import shell將資料寫入db ，但有亂碼中文字待處理。
+v2.3	20180909	修正insert時中文亂碼問題(web和console都搞定了)
 </pre>
 ## 待辦：
-##### 0.Primary key 1.股票名稱  2.代號  3.收盤後成交價 4.當日最高 5.當日最低 6.日期 (塞db)
+##### 0.Primary key 1.股票名稱  2.代號  3.收盤後成交價 4.當日最高 5.當日最低 6.日期
 ##### db timestamp 要想辦法
 ##### db password密碼加密
 ##### db 內和日期和stock_name 當key 不可重複,timezone +08:00
@@ -37,11 +38,14 @@ v2.2	20180909	新增import shell將資料寫入db ，但有亂碼中文字待處
 ###### ref11: [Mysql 多筆insert](http://gn02214231.pixnet.net/blog/post/200632246-sql-insert-into)
 ###### ref12: [Mysql utf8mb4格式](http://ourmysql.com/archives/1402)
 ###### ref13: [docker Mysql TimeZone](https://hk.saowen.com/a/207e511282672f4a85600ed8225f8ed764fb5614180c652e377d6910d09d5ce8)
-###### ref14: **快速刪除停用的container :**`docker rm $(docker ps -aq)`
+###### ref14: ** 快速刪除停用的container : ** `docker rm $(docker ps -aq)`
 ###### ref15: [docker-compose volume1](https://docs.docker.com/compose/compose-file/#volume-configuration-reference)
 ###### ref16: [docker-compose volume2](http://www.netadmin.com.tw/article_print.aspx?sn=1712060002)
 ###### ref17: [docker remove 失效volume](https://medium.com/@toomore/%E9%97%9C%E6%96%BC%E6%88%91%E5%B8%B8%E7%94%A8%E7%9A%84-docker-%E5%B0%8F%E6%8F%90%E7%A4%BA-9a63efdbce20) `docker volume ls -qf dangling=true | xargs -r docker volume rm`
 ###### ref18: [docker 找到volume實體位置](https://ithelp.ithome.com.tw/articles/10192397) `docker inspect -f '{{.Mounts}}' <container id>`
 ###### ref19: [docker 找到volume實體位置2](https://julianchu.net/2016/04/19-docker.html) `docker volume inspect <volume id>`
-###### ref20: **docker 掛載其他volume: **`docker run -d --name QQ --volumes-from <其他container id> <image id>`
+###### ref20: ** docker 掛載其他volume: ** `docker run -d --name QQ --volumes-from <其他container id> <image id>`
 ###### ref21: [docker MariaDB匯入sql](https://stackoverflow.com/questions/43880026/import-data-sql-mysql-docker-container/43880563) 
+###### ref22: [docker MariaDB修正中文亂碼](https://blog.csdn.net/u012410733/article/details/61619656)
+###### ref23: [docker MariaDB修正中文亂碼置換檔案](https://stackoverflow.com/questions/46004648/how-to-setup-mysql-with-utf-8-using-docker-compose)
+

@@ -1,12 +1,33 @@
-#!/bin/bash
 #start db and admin
-# docker-compose -f docker-compose.yml up
+docker-compose -f docker-compose.yml up
 #use admin
-# http://localhost:8080/ 用yml資料登入 (root/111111)
+http://localhost:8080/ # 用yml資料登入 (root/111111)
 #stop 
-# docker-compose stop
+docker-compose stop
 #rm
-# docker-compose rm
+docker-compose rm
 #find volume
-# docker volume ls 
-# docker volume inspect <volume name>
+docker volume ls 
+docker volume inspect <volume name>
+#rm volume
+docker volume rm <volume name>
+docker volume rm mariadb_db_vol
+#check UTF8 setting
+show variables like '%char%';
+#fast select table
+docker exec -it mariadb_db_1 bash
+mysql -uroot -p111111 prostock_db
+select * from stock_main;
+
+#處理中文亂碼問題###########################################################
+#docker-compose yml要直接把這個檔換掉
+vi /etc/mysql/mariadb.cnf
+[client]
+# Default is Latin1, if you need UTF-8 set this (also in server section)
+default-character-set = utf8
+
+[mysqld]
+# Default is Latin1, if you need UTF-8 set all this (also in client section)
+character-set-server  = utf8
+collation-server      = utf8_general_ci
+############################################################################
