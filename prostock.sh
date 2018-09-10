@@ -18,7 +18,7 @@ grep -v "<p>" $STOCKTMP|grep -A8 "([0-9]\{1,4\})" > d1.tmp
 sed "s/.*ct.>//g" d1.tmp |sed "/:[0-9]/d"  | grep -A1 "(" > d2.tmp
 sed '/--/d' d2.tmp |sed "s/^[0-9]/<\">/" > d3.tmp #刪grep 剩的-- ，並在數字前加<">
 sed 's/<.*">//g' d3.tmp | sed "s/<\/span>.*>//g" > d4.tmp #刪股價後的data
-sed "s/.(/,/g" d4.tmp |sed "s/).*>/,n/g" |xargs > d5.tmp #全弄成一行，分隔用,n
+sed "s/.(/,/g" d4.tmp |sed "s/).*>/,n/g" | sed ':a ; N;s/\n/ / ; t a ; ' > d5.tmp #全弄成一行，分隔用,n ; ref24 
 sed "s/,n. /,/g" d5.tmp | sed "s/[0-9]. / \n/g" > d6.tmp #再拆開
 sed "s///g" d6.tmp | sed "s/　//g" > d7.tmp # 去除\^M(Ctrl+V & Ctrl+M)斷行符號,中文字空格 ref4
 sed "s/^/'/g" d7.tmp |sed "s/^[^\D,]\{1,10\}/&'/g" |sed "s/ $//g" >> f8.tmp #中文字前後加''方便日後塞入db, 移除結尾的空白 ref1

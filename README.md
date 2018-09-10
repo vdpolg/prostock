@@ -20,10 +20,11 @@ v2.1	20180909	加入function VD驗證機制, 因為常常抓不到第一頁資�
 v2.2	20180909	新增import shell將資料寫入db ，但有亂碼中文字待處理。
 v2.3	20180909	修正insert時中文亂碼問題(web和console都搞定了)
 v2.3.1	20180909	mv manual readme, 移除多餘mysql.sql
+v2.3.2	20180910	修正手機版Termux可匯出正確p10.tmp(xargs > d5.tmp 異常,改用sed合併) `ref24`
 </pre>
 > 待辦：
 >> 0.Primary key 1.股票名稱  2.代號  3.收盤後成交價 4.當日最高 5.當日最低 6.日期
->>> 手機termux執行會顯示 ***`,n`*** 待修正
+>>> win10 cmd 的bat檔執行匯入功能異常，目前手動貼上OK "<" 用"0^" 也不行 
 >>>> db password密碼加密
 >>>>> 想一下怎麼分析資料,設排程執行
 >>>>>> timezone +08:00
@@ -50,4 +51,4 @@ v2.3.1	20180909	mv manual readme, 移除多餘mysql.sql
 ###### ref21: [docker MariaDB匯入sql](https://stackoverflow.com/questions/43880026/import-data-sql-mysql-docker-container/43880563) 
 ###### ref22: [docker MariaDB修正中文亂碼](https://blog.csdn.net/u012410733/article/details/61619656)
 ###### ref23: [docker MariaDB修正中文亂碼置換檔案](https://stackoverflow.com/questions/46004648/how-to-setup-mysql-with-utf-8-using-docker-compose)
-
+###### ref24: [sed 多行合併為一行(因有些環境xargs不支援^M斷行)](https://blog.csdn.net/hjxhjh/article/details/17264739) `sed ':a ; N;s/\n/ / ; t a ; ' <file>`

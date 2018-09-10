@@ -15,8 +15,9 @@ docker volume rm mariadb_db_vol
 #check UTF8 setting
 show variables like '%char%';
 #fast select table
-docker exec -it mariadb_db_1 bash
-mysql -uroot -p111111 prostock_db
+ #docker exec -it mariadb_db_1 bash
+ #mysql -uroot -p111111 prostock_db
+docker exec -it mariadb_db_1 mysql -uroot -p111111 prostock_db
 select * from stock_main;
 
 #處理中文亂碼問題###########################################################
