@@ -21,6 +21,7 @@ v2.2	20180909	新增import shell將資料寫入db ，但有亂碼中文字待處
 v2.3	20180909	修正insert時中文亂碼問題(web和console都搞定了)
 v2.3.1	20180909	mv manual readme, 移除多餘mysql.sql
 v2.3.2	20180910	修正手機版Termux可匯出正確p10.tmp(xargs > d5.tmp 異常,改用sed合併) `ref24`
+** v2.4 **	20180910	 嚴重錯誤,部份資料價格錯誤(從d3.tmp開始)(例107變07),`sed`的`&`沒加到 `ref1`
 </pre>
 > 待辦：
 >> 0.Primary key 1.股票名稱  2.代號  3.收盤後成交價 4.當日最高 5.當日最低 6.日期

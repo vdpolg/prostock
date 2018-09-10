@@ -16,7 +16,7 @@ curl -so $STOCKTMP $SOURCEHTML -H 'Connection: keep-alive' -H 'Cache-Control: ma
 grep -v "<p>" $STOCKTMP|grep -A8 "([0-9]\{1,4\})" > d1.tmp
 #股名和代號
 sed "s/.*ct.>//g" d1.tmp |sed "/:[0-9]/d"  | grep -A1 "(" > d2.tmp
-sed '/--/d' d2.tmp |sed "s/^[0-9]/<\">/" > d3.tmp #刪grep 剩的-- ，並在數字前加<">
+sed '/--/d' d2.tmp |sed "s/^[0-9]/<\">&/" > d3.tmp #刪grep 剩的-- ，並在數字前加<"> ,&很重要
 sed 's/<.*">//g' d3.tmp | sed "s/<\/span>.*>//g" > d4.tmp #刪股價後的data
 sed "s/.(/,/g" d4.tmp |sed "s/).*>/,n/g" | sed ':a ; N;s/\n/ / ; t a ; ' > d5.tmp #全弄成一行，分隔用,n ; ref24 
 sed "s/,n. /,/g" d5.tmp | sed "s/[0-9]. / \n/g" > d6.tmp #再拆開
