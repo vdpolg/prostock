@@ -21,7 +21,6 @@ sed 's/<.*">//g' d3.tmp | sed "s/<\/span>.*>//g" > d4.tmp #刪股價後的data
 sed "s/.(/,/g" d4.tmp |sed "s/).*>/,n/g" | sed ':a ; N;s/\n/ / ; t a ; ' > d5.tmp #全弄成一行，分隔用,n ; ref24 
 sed "s/,n. /,/g" d5.tmp | sed "s/[0-9]. / \n/g" > d6.tmp #再拆開
 sed "s///g" d6.tmp | sed "s/　//g" > d7.tmp # 去除\^M(Ctrl+V & Ctrl+M)斷行符號,中文字空格 ref4
-#sed "s/^/'/g" d7.tmp |sed "s/^[^\D,]\{1,10\}/&'/g" |sed "s/ $//g" >> f8.tmp #中文字前後加''方便日後塞入db, 移除結尾的空白 ref1
 sed "s/^/'/g" d7.tmp |sed "s/,[0-9]*,[0-9]*/'&/g"|sed "s/ $//g" >> f8.tmp #中文字前後加''方便日後塞入db, 移除結尾的空白 ref1
 cd $WRKDIR ; mv d* tmp/
 }
