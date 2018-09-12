@@ -23,10 +23,10 @@ v2.3.1	20180909	mv manual readme, 移除多餘mysql.sql
 v2.3.2	20180910	修正手機版Termux可匯出正確p10.tmp(xargs > d5.tmp 異常,改用sed合併) ref24
 v2.4	20180910	 嚴重錯誤,部份資料價格錯誤(從d3.tmp開始)(例107變07),sed 的"&"漏加 ref1
 v2.4.1	20180911	修正f8.tmp 中文字斷字誤判
+v2.4.2	20180912	塞price_main 資料(mariadb/readme)
 </pre>
 > 待辦：
->> 0.Primary key 1.股票名稱  2.代號  3.收盤後成交價 4.當日最高 5.當日最低 6.日期
->>> win10 cmd 的bat檔執行匯入功能異常，目前手動貼上OK "<" 用"0^" 也不行 
+>>> 塞price_main相關shell 
 >>>> db password密碼加密
 >>>>> 想一下怎麼分析資料,設排程執行
 #### 使用方法
