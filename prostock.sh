@@ -38,6 +38,18 @@ else
 	exit 1
 fi
 } 
+function IPM(){ # Insert into Price_Main 
+echo "塞price_main資料"
+cat >> p10.tmp << EOF
+`echo`insert into price_main
+`echo`(primary_key,done_price,avg_price,max_price,min_price)
+`echo`select max(primary_key),done_price,round(avg(done_price),2),max(done_price),min(done_price)
+`echo`from stock_main
+`echo`group by stock_name
+`echo`order by max(primary_key);
+EOF
+echo "OK!"
+}
 echo "抓資料中..."
 for i in `SH`
 do
@@ -48,4 +60,5 @@ cat f8.tmp | AII > f9.tmp # 塞db用的 insert into stock_main (stock_name,stock
 sed "s/$/,current_timestamp());/g" f9.tmp > p10.tmp # insert 的結尾,含current time
 mv f*tmp tmp/ # 搬暫存檔，避免f8 重複執行多餘資料
 VD # Valid Data
+IPM # Insert into Price_Main ;
 less p10.tmp # show stock
