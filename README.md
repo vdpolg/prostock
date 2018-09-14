@@ -24,7 +24,8 @@ v2.3.2	20180910	修正手機版Termux可匯出正確p10.tmp(xargs > d5.tmp 異�
 v2.4	20180910	 嚴重錯誤,部份資料價格錯誤(從d3.tmp開始)(例107變07),sed 的"&"漏加 ref1
 v2.4.1	20180911	修正f8.tmp 中文字斷字誤判
 v2.4.2	20180912	塞price_main 資料(mariadb/readme)
-v2.4.3	20180913	shell insert price_main 
+v2.4.3	20180913	shell insert price_main (數據錯誤…這版不能用)
+v2.4.4	20180914	fix price_main done_price error(又再一次搞死我) ref25~26
 </pre>
 > 待辦：
 >>> db password密碼加密
@@ -60,3 +61,5 @@ v2.4.3	20180913	shell insert price_main
 ###### ref22: [docker MariaDB修正中文亂碼](https://blog.csdn.net/u012410733/article/details/61619656)
 ###### ref23: [docker MariaDB修正中文亂碼置換檔案](https://stackoverflow.com/questions/46004648/how-to-setup-mysql-with-utf-8-using-docker-compose)
 ###### ref24: [sed 多行合併為一行(因有些環境xargs不支援^M斷行)](https://blog.csdn.net/hjxhjh/article/details/17264739) `sed ':a ; N;s/\n/ / ; t a ; ' <file>`
+###### ref25: [SQL select into 、group by 、join的注意事項](https://stackoverflow.com/questions/9473718/getting-max-value-from-rows-and-joining-to-another-table)
+###### ref26: [SQL insert into 注意別名](https://www.cnblogs.com/RoadGY/archive/2011/07/22/2114088.html)

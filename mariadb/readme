@@ -35,11 +35,20 @@ collation-server      = utf8_general_ci
 
 ############################################################################
 塞price_main 資料
-insert into price_main 
+insert into price_main
 (primary_key,done_price,avg_price,max_price,min_price)
-select max(primary_key),done_price,round(avg(done_price),2),max(done_price),min(done_price)
-from stock_main
-group by stock_name
-order by max(primary_key)
-;
+select * from
+(select a.primary_key,a.done_price ,round(avg(c.done_price),2),max(c.done_price),min(c.done_price)
+from stock_main a
+join (
+select max(b.primary_key) as mp,b.done_price
+from stock_main b
+group by b.stock_name
+) as newb on
+a.primary_key = newb.mp
+join stock_main c
+on 
+a.stock_name=c.stock_name
+group by a.stock_name
+order by a.primary_key) as skm;
 ############################################################################

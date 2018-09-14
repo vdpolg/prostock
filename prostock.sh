@@ -43,10 +43,20 @@ echo "塞price_main資料"
 cat >> p10.tmp << EOF
 `echo`insert into price_main
 `echo`(primary_key,done_price,avg_price,max_price,min_price)
-`echo`select max(primary_key),done_price,round(avg(done_price),2),max(done_price),min(done_price)
-`echo`from stock_main
-`echo`group by stock_name
-`echo`order by max(primary_key);
+`echo`select * from
+`echo`(select a.primary_key,a.done_price ,round(avg(c.done_price),2),max(c.done_price),min(c.done_price)
+`echo`from stock_main a
+`echo`join (
+`echo`select max(b.primary_key) as mp,b.done_price
+`echo`from stock_main b
+`echo`group by b.stock_name
+`echo`) as newb on
+`echo`a.primary_key = newb.mp
+`echo`join stock_main c
+`echo`on
+`echo`a.stock_name=c.stock_name
+`echo`group by a.stock_name
+`echo`order by a.primary_key) as skm;
 EOF
 echo "OK!"
 }
