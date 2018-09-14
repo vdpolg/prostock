@@ -21,15 +21,17 @@ v2.2	20180909	新增import shell將資料寫入db ，但有亂碼中文字待處
 v2.3	20180909	修正insert時中文亂碼問題(web和console都搞定了)
 v2.3.1	20180909	mv manual readme, 移除多餘mysql.sql
 v2.3.2	20180910	修正手機版Termux可匯出正確p10.tmp(xargs > d5.tmp 異常,改用sed合併) ref24
-v2.4	20180910	 嚴重錯誤,部份資料價格錯誤(從d3.tmp開始)(例107變07),sed 的"&"漏加 ref1
+v2.4	20180910	嚴重錯誤,部份資料價格錯誤(從d3.tmp開始)(例107變07),sed 的"&"漏加 ref1
 v2.4.1	20180911	修正f8.tmp 中文字斷字誤判
 v2.4.2	20180912	塞price_main 資料(mariadb/readme)
 v2.4.3	20180913	shell insert price_main (數據錯誤…這版不能用)
 v2.4.4	20180914	fix price_main done_price error(又再一次搞死我) ref25~26
+v2.5	20180915	create view 成長率排序
 </pre>
 > 待辦：
 >>> db password密碼加密
->>>> 想一下怎麼分析資料,設排程執行
+>>>> 設排程執行
+>>>>> linux client　直接塞db
 #### 使用方法
 	1. 安裝docker & docker-compose
 	1.1 [安裝MariaDB & Web主控台](./mariadb/readme) cd mariadb ; docker-compose -f docker-compose.yml up 	

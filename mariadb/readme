@@ -52,3 +52,21 @@ a.stock_name=c.stock_name
 group by a.stock_name
 order by a.primary_key) as skm;
 ############################################################################
+create view 成長率排序
+select * from
+(select price_main.primary_key,c.stock_name as 股名,c.done_price as 成交價,
+round((price_main.done_price-price_main.avg_price),2)as 與平均價差,avg_price 平均價,
+round(((price_main.done_price-price_main.avg_price) / avg_price),2) as 成長百分比,
+c.check_time as 更新時間
+from price_main
+join (
+select max(b.primary_key) as mp,b.done_price
+from stock_main b
+group by b.stock_name
+) as newb on
+price_main.primary_key = newb.mp
+join stock_main c on
+c.primary_key=price_main.primary_key
+group by c.stock_name
+order by 成長百分比 desc ) as skm
+############################################################################
