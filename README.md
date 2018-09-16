@@ -28,16 +28,16 @@ v2.4.3	20180913	shell insert price_main (數據錯誤…這版不能用)
 v2.4.4	20180914	fix price_main done_price error(又再一次搞死我) ref25~26
 v2.5	20180915	create view 成長率排序
 v2.5.1 20180915 修正README錯字,待調整win10 bash和win docker整合(起雞皮疙瘩的功能) ref27
+v2.6	20180916	前端新增https的docker
 </pre>
 > 待辦：
->> no-ip 和 ssl架站
->>> db password密碼加密
->>>> 設排程執行
->>>>> 先處理2.5.1 功能實現
+>> db password密碼加密
+>>> 設排程執行
+>>>> 先處理2.5.1 功能實現
 #### 使用方法
 	1. 安裝docker & docker-compose
-	1.1 [安裝MariaDB & Web主控台](./mariadb/readme) cd mariadb ; docker-compose -f docker-compose.yml up 	
-	1.2 http://localhost:8080 (root/密碼)登入確認是否正常
+	1.1 [安裝MariaDB & Adminer client & Https Web ](./mariadb/readme) cd mariadb ; docker-compose -f docker-compose.yml up 	
+	1.2 https://example.com (root/密碼)登入確認是否正常
 	2. 撈資料：./prostock.sh 
 	3. 匯入資料：./import.sh
 	4. 同1.2確認prostock_db 資料
@@ -68,3 +68,5 @@ v2.5.1 20180915 修正README錯字,待調整win10 bash和win docker整合(起雞
 ###### ref25: [SQL select into 、group by 、join的注意事項](https://stackoverflow.com/questions/9473718/getting-max-value-from-rows-and-joining-to-another-table)
 ###### ref26: [SQL insert into 注意別名](https://www.cnblogs.com/RoadGY/archive/2011/07/22/2114088.html)
 ###### ref27: [Windows 10的Ubuntu bash下run Docker](https://www.cnblogs.com/cloudapps/p/7800428.html)
+###### ref28: [A fully automated HTTPS server powered by Nginx, Let's Encrypt and Docker](https://github.com/SteveLTN/https-portal)
+###### ref29: [承上的設定檔參考](https://github.com/SteveLTN/https-portal/blob/master/examples/minimal/docker-compose.yml) `PRODUCTION: 'true'`
