@@ -28,7 +28,7 @@ v2.4.3	20180913	shell insert price_main (數據錯誤…這版不能用)
 v2.4.4	20180914	fix price_main done_price error(又再一次搞死我) ref25~26
 v2.5	20180915	create view 成長率排序
 v2.5.1 20180915 修正README錯字,待調整win10 bash和win docker整合(起雞皮疙瘩的功能) ref27
-v2.6	20180916	前端新增https的docker
+v2.6	20180916	前端新增https的docker ref28~29
 </pre>
 > 待辦：
 >> db password密碼加密
@@ -36,8 +36,8 @@ v2.6	20180916	前端新增https的docker
 >>>> 先處理2.5.1 功能實現
 #### 使用方法
 	1. 安裝docker & docker-compose
-	1.1 [安裝MariaDB & Adminer client & Https Web ](./mariadb/readme) cd mariadb ; docker-compose -f docker-compose.yml up 	
-	1.2 https://example.com (root/密碼)登入確認是否正常
+	1.1 [安裝MariaDB & Adminer client & Https Web ](./mariadb/readme) cd mariadb ; docker-compose up -d
+	1.2 https://example.com (root/密碼)登入確認是否正常(網域和https
 	2. 撈資料：./prostock.sh 
 	3. 匯入資料：./import.sh
 	4. 同1.2確認prostock_db 資料
