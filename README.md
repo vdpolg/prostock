@@ -27,13 +27,13 @@ v2.4.2	20180912	塞price_main 資料(mariadb/readme)
 v2.4.3	20180913	shell insert price_main (數據錯誤…這版不能用)
 v2.4.4	20180914	fix price_main done_price error(又再一次搞死我) ref25~26
 v2.5	20180915	create view 成長率排序
-v2.5.1 20180915 修正README錯字,待調整win10 bash和win docker整合(起雞皮疙瘩的功能) ref27
+v2.5.1	20180915	修正README錯字,待調整win10 bash和win docker整合(起雞皮疙瘩的功能) ref27
 v2.6	20180916	前端新增https的docker ref28~29
+v2.6.1	20180917	"fix 小資股 done_price < 100 ,測試排程ok。" ref30
 </pre>
 > 待辦：
 >> db password密碼加密
->>> 設排程執行
->>>> 先處理2.5.1 功能實現
+>>> 先處理2.5.1 功能實現
 #### 使用方法
 	1. 安裝docker & docker-compose
 	1.1 [安裝MariaDB & Adminer client & Https Web ](./mariadb/readme) cd mariadb ; docker-compose up -d
@@ -70,3 +70,4 @@ v2.6	20180916	前端新增https的docker ref28~29
 ###### ref27: [Windows 10的Ubuntu bash下run Docker](https://www.cnblogs.com/cloudapps/p/7800428.html)
 ###### ref28: [A fully automated HTTPS server powered by Nginx, Let's Encrypt and Docker](https://github.com/SteveLTN/https-portal)
 ###### ref29: [承上的設定檔參考](https://github.com/SteveLTN/https-portal/blob/master/examples/minimal/docker-compose.yml) `PRODUCTION: 'true'`
+###### **ref30: 設定crontab:** `35 10-14 * * 1-5 cd /tmp/prostock; ./prostock.sh && ./import.sh`
